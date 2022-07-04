@@ -6,7 +6,7 @@ export default function MovieDetails({ movie }) {
   const {
     original_title,
     genres,
-    popularity,
+    vote_average,
     overview,
     backdrop_path,
     release_date,
@@ -16,20 +16,22 @@ export default function MovieDetails({ movie }) {
     <article>
       <button>Go back</button>
       <div>
-        <img src={`${backdrop_path}`} alt={original_title} />
+        <img
+          src={`https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${backdrop_path}`}
+          alt={original_title}
+        />
         <div>
           <h2>
-            {original_title}
-            {release_date}
+            {original_title} ({new Date(release_date).getFullYear()})
           </h2>
-          <p>User score:{Math.round(popularity)}%</p>
+          <p>User score:{Math.round(vote_average * 10)}%</p>
           <div>
             <h3>Overview</h3>
             <p>{overview}</p>
           </div>
           <div>
             <h3>Genres</h3>
-            <p>{genres[0].name}</p>
+            <p>{genres.map(({ name }) => name).join(', ')}</p>
           </div>
         </div>
       </div>
