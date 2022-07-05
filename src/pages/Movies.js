@@ -7,37 +7,35 @@ import { fetchMoviesBySearch } from 'services/fetchAPI';
 import { SectionWrap, Warning } from './page.styled';
 
 export default function Movies() {
-  const [search, setSearch] = useState('');
   const [searchedMovies, setSearchedMovies] = useState([]);
   const [status, setStatus] = useState('idle');
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
   const navigation = useNavigate();
-
   const serchUrl = searchParams.get('query');
-  console.log(serchUrl);
 
   useEffect(() => {
-    if (serchUrl) {
-      setSearch(serchUrl);
-    }
-    if (search === '') {
+    if (!serchUrl) {
       return;
     }
-    fetchMoviesBySearch(search).then(results => {
+    fetchMoviesBySearch(serchUrl).then(results => {
       setSearchedMovies(results);
-      navigation({ search: `query=${search}` });
+
       if (results.length === 0) {
         setStatus('noFound');
       } else {
         setStatus('resolved');
       }
     });
-  }, [navigation, search, serchUrl]);
+  }, [serchUrl]);
+
+  function onHandleSubmit(query) {
+    navigation({ search: `query=${query}` });
+  }
 
   return (
     <SectionWrap>
-      <SearchForm onSubmit={setSearch} />
+      <SearchForm onSubmit={onHandleSubmit} />
       {status === 'resolved' && <MovieList movies={searchedMovies} />}
       {status === 'noFound' && (
         <Warning>Sorry, no movie found on your request</Warning>
