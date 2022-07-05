@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import SearchForm from 'components/SearchForm';
 import MovieList from 'components/MovieList';
 import { fetchMoviesBySearch } from 'services/fetchAPI';
+import { SectionWrap, Warning } from './page.styled';
 
 export default function Movies() {
   const [search, setSearch] = useState('');
@@ -24,10 +25,12 @@ export default function Movies() {
   }, [search]);
 
   return (
-    <div>
+    <SectionWrap>
       <SearchForm onSubmit={setSearch} />
       {status === 'resolved' && <MovieList movies={searchedMovies} />}
-      {status === 'noFound' && <p>Soory, no movie found on your request</p>}
-    </div>
+      {status === 'noFound' && (
+        <Warning>Sorry, no movie found on your request</Warning>
+      )}
+    </SectionWrap>
   );
 }

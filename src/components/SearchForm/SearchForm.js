@@ -18,6 +18,7 @@ export default function SearchForm({ onSubmit }) {
       return;
     }
     onSubmit(search);
+    setSearch('');
   }
 
   return (

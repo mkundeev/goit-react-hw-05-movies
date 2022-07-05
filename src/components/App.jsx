@@ -15,11 +15,12 @@ export const App = () => {
   return (
     
     <div>
+      
       <Navigation />
      <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/movies" element={<Movies />} />
-        <Route path="/movies/:movieId" element={<SingleMovieInfo />} />
+        <Route path="/movies/:movieId/*" element={<SingleMovieInfo />} />
         <Route path="*" element={<Home/>} />
       </Routes>
       <ToastContainer autoClose={2000}/>  

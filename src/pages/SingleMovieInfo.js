@@ -8,10 +8,7 @@ export default function SingleMovieInfo() {
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
   useEffect(() => {
-    fetchMovieById(Number(movieId)).then(result => {
-      setMovie(result);
-      console.log(result);
-    });
+    fetchMovieById(Number(movieId)).then(setMovie);
   }, [movieId]);
 
   return <>{movie && <MovieDetails movie={movie} />}</>;
