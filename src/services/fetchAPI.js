@@ -28,8 +28,5 @@ export const fetchMovieCreditsById = id => {
 export const fetchMovieReviewsById = id => {
   return axios(
     `${url}movie/${id}/reviews?api_key=${API_KEY}&language=en-US`
-  ).then(results => {
-    console.log(results.data.results);
-    return results.data.results;
-  });
+  ).then(results => results.data.results);
 };

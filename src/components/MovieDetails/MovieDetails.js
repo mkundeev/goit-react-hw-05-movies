@@ -7,13 +7,15 @@ import {
   MovieAdditionalInfoList,
   AdditionalInfoWrap,
 } from './MovieDetails.styled';
-import { NavLink, Route, Routes, useNavigate } from 'react-router-dom';
-import MovieCast from 'components/MovieCast';
-import MovieReviews from 'components/MovieReviews';
+import { useState } from 'react';
+import { NavLink, Outlet, Link, useLocation } from 'react-router-dom';
 
 export default function MovieDetails({ movie }) {
-  const navigate = useNavigate();
-  console.log(navigate);
+  const location = useLocation();
+  const [backLink, setBackLink] = useState(() =>
+    location.state?.from ? location.state?.from : '/'
+  );
+
   const {
     original_title,
     genres,
@@ -22,12 +24,11 @@ export default function MovieDetails({ movie }) {
     poster_path,
     release_date,
   } = movie;
+
   return (
     <div>
       <MovieArticle>
-        <button type="button" onClick={() => navigate(-1)}>
-          Go back
-        </button>
+        <Link to={backLink}>Go back</Link>
         <MovieWrap>
           <MoviePoster>
             <img
@@ -60,12 +61,7 @@ export default function MovieDetails({ movie }) {
           </MovieAdditionalInfoList>
         </AdditionalInfoWrap>
       </MovieArticle>
-      <Routes>
-        <Route path="cast" element={<MovieCast />} />
-        <Route path="reviews" element={<MovieReviews />} />
-      </Routes>
+      <Outlet />
     </div>
   );
 }
-
-// genres.map(({ name }) => name).join(', ');

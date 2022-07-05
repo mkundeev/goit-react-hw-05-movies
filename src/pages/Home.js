@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+
 import MovieList from 'components/MovieList';
 import { fetchTrendMovies } from 'services/fetchAPI';
 import { SectionWrap } from './page.styled';

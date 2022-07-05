@@ -12,7 +12,6 @@ import {
 export default function MovieReviews() {
   const [reviews, setReviews] = useState(null);
   const { movieId } = useParams();
-  console.log(movieId);
   useEffect(() => {
     fetchMovieReviewsById(Number(movieId)).then(setReviews);
   }, [movieId]);
