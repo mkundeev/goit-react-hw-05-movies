@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { BallTriangle } from 'react-loader-spinner';
 
 export const SectionWrap = styled.div`
   padding: 20px;

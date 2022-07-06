@@ -1,6 +1,6 @@
 import React from 'react';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import {
   MovieWrap,
@@ -14,9 +14,7 @@ import {
 
 export default function MovieDetails({ movie }) {
   const location = useLocation();
-  const [backLink] = useState(
-    location.state?.from ? location.state?.from : '/'
-  );
+  const backLink = useRef(location.state?.from ? location.state?.from : '/');
 
   const {
     original_title,
@@ -30,7 +28,7 @@ export default function MovieDetails({ movie }) {
   return (
     <div>
       <MovieArticle>
-        <GoBackButton to={backLink}>
+        <GoBackButton to={backLink.current}>
           <AiOutlineArrowLeft /> Go back
         </GoBackButton>
         <MovieWrap>
