@@ -12,7 +12,7 @@ import { NavLink, Outlet, Link, useLocation } from 'react-router-dom';
 
 export default function MovieDetails({ movie }) {
   const location = useLocation();
-  const [backLink, setBackLink] = useState(() =>
+  const [backLink] = useState(() =>
     location.state?.from ? location.state?.from : '/'
   );
 
