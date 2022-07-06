@@ -1,6 +1,6 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import {
   MovieWrap,
@@ -67,3 +67,14 @@ export default function MovieDetails({ movie }) {
     </div>
   );
 }
+
+MovieDetails.propTypes = {
+  movie: PropTypes.shape({
+    original_title: PropTypes.string,
+    genres: PropTypes.array,
+    vote_average: PropTypes.number,
+    overview: PropTypes.string,
+    poster_path: PropTypes.string,
+    release_date: PropTypes.string,
+  }).isRequired,
+};

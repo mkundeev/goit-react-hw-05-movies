@@ -1,4 +1,3 @@
-import React from 'react';
 import { StyledNavLink, StyledNav } from './Navigation.styled';
 
 export default function Navigation() {

@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import { ReviewAuthor } from './MovieReviewsItem.styled';
 
 export default function MovieReviewsItem({ author, content }) {
@@ -9,3 +9,8 @@ export default function MovieReviewsItem({ author, content }) {
     </>
   );
 }
+
+MovieReviewsItem.propTypes = {
+  author: PropTypes.string,
+  content: PropTypes.string,
+};

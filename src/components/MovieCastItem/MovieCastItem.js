@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import { MovieCastImg } from './MovieCastItem.styled';
 
 export default function MovieCastItem({ name, character, picture }) {
@@ -17,3 +17,9 @@ export default function MovieCastItem({ name, character, picture }) {
     </>
   );
 }
+
+MovieCastItem.propTypes = {
+  name: PropTypes.string,
+  character: PropTypes.string,
+  picture: PropTypes.string,
+};

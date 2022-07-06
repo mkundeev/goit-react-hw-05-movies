@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
 import { StyledList } from './MovieList.styled';
 
@@ -18,3 +18,15 @@ export default function MovieList({ movies }) {
     </StyledList>
   );
 }
+
+MovieList.propTypes = {
+  movies: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        original_title: PropTypes.string.isRequired,
+      })
+    ),
+    PropTypes.array,
+  ]).isRequired,
+};

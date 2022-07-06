@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import SearchForm from 'components/SearchForm';
