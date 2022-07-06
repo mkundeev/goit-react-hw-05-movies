@@ -1,5 +1,7 @@
 import React from 'react';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
+import { useState } from 'react';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import {
   MovieWrap,
   MoviePoster,
@@ -9,12 +11,10 @@ import {
   AdditionalInfoWrap,
   GoBackButton,
 } from './MovieDetails.styled';
-import { useState } from 'react';
-import { NavLink, Outlet, Link, useLocation } from 'react-router-dom';
 
 export default function MovieDetails({ movie }) {
   const location = useLocation();
-  const [backLink] = useState(() =>
+  const [backLink] = useState(
     location.state?.from ? location.state?.from : '/'
   );
 
