@@ -1,4 +1,5 @@
 import React from 'react';
+import { AiOutlineArrowLeft } from 'react-icons/ai';
 import {
   MovieWrap,
   MoviePoster,
@@ -6,6 +7,7 @@ import {
   MovieInfoPartsWrap,
   MovieAdditionalInfoList,
   AdditionalInfoWrap,
+  GoBackButton,
 } from './MovieDetails.styled';
 import { useState } from 'react';
 import { NavLink, Outlet, Link, useLocation } from 'react-router-dom';
@@ -28,7 +30,9 @@ export default function MovieDetails({ movie }) {
   return (
     <div>
       <MovieArticle>
-        <Link to={backLink}>Go back</Link>
+        <GoBackButton to={backLink}>
+          <AiOutlineArrowLeft /> Go back
+        </GoBackButton>
         <MovieWrap>
           <MoviePoster>
             <img

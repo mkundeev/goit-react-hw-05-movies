@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const MovieArticle = styled.article`
   padding: 20px;
@@ -32,4 +33,16 @@ export const AdditionalInfoWrap = styled.div`
   padding: 10px 0;
   border-top: 1px solid grey;
   border-bottom: 1px solid grey;
+`;
+export const GoBackButton = styled(Link)`
+  display: block;
+  background-color: #ccc;
+  width: fit-content;
+  padding: 5px 10px;
+  border-radius: 4px;
+  color: black;
+  display: flex;
+  text-decoration: none;
+  align-items: flex-end;
+  gap: 5px;
 `;
